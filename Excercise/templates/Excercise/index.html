@@ -1,0 +1,36 @@
+{% extends "divaDoc/base.html" %}
+
+
+
+{% block body %}
+<style>
+	.n1{
+		color: red;
+		font-size: 40px;
+	}
+
+	.y1{
+		font-size: 30px;
+		text-decoration: None;
+		padding: 20px;
+		margin: 10px;
+	}
+	.y1:hover{
+		color: white;
+	}
+
+	.y2{
+		padding: 20px;
+		background-color: rgb(180,180,180);
+		margin: 20px;
+		border-radius: : 2px;
+	}
+</style>
+{% if dis %}
+	{% for d in dis %}
+		<p class="y2"><a href="{% url 'Excercise:detail' d.id %}" class="y1"> <b> {{ d.dis_name }} </b> </a></p>
+	{% endfor %}
+{% else %}
+	<span class="n1"> Sorry, no Disease added !!</span>
+{% endif %}
+{% endblock %}
