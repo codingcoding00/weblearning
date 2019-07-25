@@ -1,0 +1,192 @@
+<style>
+	.star1, .star2, .star3, .star4, .star5{
+		font-size: 40px;
+		cursor: pointer;
+	}
+	
+	.w1{
+		font-size: 30px;
+		color: rgb(120,120,120);
+		text-align: center;
+	}
+	
+	.f11{
+		color: rgb(120,180,120);
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	.h11{
+		color: red;
+		text-align: center;
+	}
+	
+	.p1{
+		text-align: center;
+	}
+	
+	div{background-color:rgba(120,120,120,0.2);	padding:10px;	border:none;	border-radius:4px;}
+	input[type="text"],select{width:95%;	padding:5px 8px;	font:normal bold 18px georgia,serif;	border-radius:4px;}
+	input[type="submit"]{width:100%;	padding:10px 20px;	font-size:20px;	background-color:rgba(80,220,80,0.8);	color:white;	cursor:pointer;}
+	input[type="submit"]:hover{background-color:rgba(80,220,80,1);}
+
+	.thnx{
+		text-align: right;
+		color: black;
+		font-family: Monotype Corsiva;
+		font-size: 20px;
+	}
+</style>
+<h1 class="h11">Do you value our service ?</h1>
+<p class="p1">
+	<span class="star1" id="i1">★</span>
+	<span class="star2" id="i2">★</span>
+	<span class="star3" id="i3">★</span>
+	<span class="star4" id="i4">★</span>
+	<span class="star5" id="i5">★</span>
+	<p id="write" class="f11"> </p>
+	<p id="float" class="w1"> </p>
+</p>
+
+<div>
+	<label for="fname" class="thnx">Write your own opinion about our product </label>	
+	<p>	<input type="text" name="firstname"	id="fname" placeholder="write your opinion ....">			<br>	</p>
+		
+	<p>	<input type="Submit" value="submit" id="sbmt">	</p>
+	<p id="thank" class="thnx"></p>
+</div>
+
+<script>
+	var rate = 0;
+	var w = document.getElementById('write');
+	var f = document.getElementById('float');
+	
+	var a1 = document.getElementById('i1');
+	var a2 = document.getElementById('i2');
+	var a3 = document.getElementById('i3');
+	var a4 = document.getElementById('i4');
+	var a5 = document.getElementById('i5');
+	
+	a1.onmouseover = function(){f1()};
+	a2.onmouseover = function(){f2()};
+	a3.onmouseover = function(){f3()};
+	a4.onmouseover = function(){f4()};
+	a5.onmouseover = function(){f5()};
+	
+	a1.onmouseout = function(){ff1()};
+	a2.onmouseout = function(){ff2()};
+	a3.onmouseout = function(){ff3()};
+	a4.onmouseout = function(){ff4()};
+	a5.onmouseout = function(){ff5()};
+
+	a1.onclick = function(){fff1()};
+	a2.onclick = function(){fff2()};
+	a3.onclick = function(){fff3()};
+	a4.onclick = function(){fff4()};
+	a5.onclick = function(){fff5()};
+  
+	function f1(){
+		a1.style.color = "yellow";
+		w.innerHTML = "So bad :(";
+	}
+	function f2(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		w.innerHTML = "Not at all satisfactory :(";
+	}
+	function f3(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		w.innerHTML = "It was okay ....";
+	}
+	function f4(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		a4.style.color = "yellow";
+		w.innerHTML = "Good and helpful !";
+	}
+	function f5(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		a4.style.color = "yellow";
+		a5.style.color = "yellow";
+		w.innerHTML = "Excellent ! Loved it :)";
+	}
+	
+	function ff1(){
+		a1.style.color = "black";
+		w.innerHTML = "";
+	}
+	function ff2(){
+		a1.style.color = "black";
+		a2.style.color = "black";
+		w.innerHTML = "";
+	}
+	function ff3(){
+		a1.style.color = "black";
+		a2.style.color = "black";
+		a3.style.color = "black";
+		w.innerHTML = "";
+	}
+	function ff4(){
+		a1.style.color = "black";
+		a2.style.color = "black";
+		a3.style.color = "black";
+		a4.style.color = "black";
+		w.innerHTML = "";
+	}
+	function ff5(){
+		a1.style.color = "black";
+		a2.style.color = "black";
+		a3.style.color = "black";
+		a4.style.color = "black";
+		a5.style.color = "black";
+		w.innerHTML = "";
+	}
+
+	function fff1(){
+		a1.style.color = "yellow";
+		rate = 1;
+		f.innerHTML = "your input rating is " + rate;
+	}
+	function fff2(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		rate = 2;
+		f.innerHTML = "your input rating is " + rate;
+	}
+	function fff3(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		rate = 3;
+		f.innerHTML = "your input rating is " + rate;
+	}
+	function fff4(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		a4.style.color = "yellow";
+		rate = 4;
+		f.innerHTML = "your input rating is " + rate;
+	}
+	function fff5(){
+		a1.style.color = "yellow";
+		a2.style.color = "yellow";
+		a3.style.color = "yellow";
+		a4.style.color = "yellow";
+		a5.style.color = "yellow";
+		rate = 5;
+		f.innerHTML = "your input rating is " + rate;
+	}
+	
+	s1 = document.getElementById('sbmt');
+	s2 = document.getElementById('thank');
+	s1.onclick = function(){s11()};
+	function s11(){
+		s2.innerHTML = "Thank you for your review :)";
+	}
+</script>

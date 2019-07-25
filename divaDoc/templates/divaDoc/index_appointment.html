@@ -1,0 +1,28 @@
+
+<style>
+	.d1{
+		font-size: 50px;
+		color: white;
+		padding: 50px 260px;
+		background-color: rgb(120,120,120);
+		display: inline-block;
+		margin: 10px;
+	}
+	
+	.d1:hover{
+		background-color: black;
+	}
+	
+	.d2{
+		font-size: 40px;
+		color: red;
+	}
+
+</style>
+{% if doc %}
+	{% for d in doc %}
+		<a href={% url 'divaDoc:detail_appointment' d.id %} style="text-decoration:None;" class="d1"> {{ d.d_type }} </a>
+	{% endfor %}
+{% else %}
+	<p class="d2"> Sorry, no doctor available !! </p>
+{% endif %}

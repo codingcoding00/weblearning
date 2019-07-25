@@ -1,0 +1,125 @@
+<style>
+	.hh1{
+		color: Black;
+		font-family: "Algerian";
+		font-size: 50px;
+		text-align: center;
+	}
+	
+	.t0{
+		padding: 2px 58px;
+		margin: 1px;
+	}
+
+	.t1{
+		width: 100%;
+		color: white;
+		font-size: 26px;
+		padding: 4px 70px;
+		margin: 1px;
+		background-color: rgb(200,200,120);
+	}
+	
+	.t1:hover{
+		color: white;
+		background-color: black;
+	}
+	
+	.t2{
+		width: 100%;
+		font-size: 20px;
+		padding: 4px 70px;
+		margin: 1px;
+		background-color: rgb(120,200,120);
+	}
+	
+	.t2:hover{
+		color: white;
+		background-color: green;
+	}
+	
+	.i1{
+		padding: 10px 20px;
+		background-color: rgb(120,250,120);
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 30px;
+	}
+	
+	.i1:hover{
+		background-color: rgb(0,50,0);
+		color: white;
+	}
+	
+	.i2{
+		padding: 10px 20px;
+		background-color: red;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 30px;
+	}
+	
+	.i2:hover{
+		background-color: rgb(200,20,20);
+		color: white;
+	}
+	
+	input[type='radio']{
+		transform: scale(1.5);
+	}
+</style>
+
+<h1 class="hh1"> {{ doctor.d_type }} </h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'divaDoc:book_appointment' doctor.id %}" method="post">
+{% csrf_token %}
+<table>
+	<tr class="t1"> 
+		<th class="t0">	Book </th>
+		<th class="t0"> Name </th> 
+		<th class="t0"> Location </th>
+		<th class="t0"> Available Dates </th>
+		<th class="t0"> Working hour</th>
+		<th class="t0"> Status </th>
+	</tr>
+{% for choice in doctor.choice_set.all %}
+	<tr class='t2'> 
+		<th>	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">	</th>
+		<th>	<label for="choice{{ forloop.counter }}">{{ choice.name }}</label>	</th>
+		<th>	{{ choice.location }}	</th>
+		<th>	{{ choice.available_dates }}	</th>
+		<th class="t0"> {{ choice.works_from }} - {{ choice.works_upto }} </th>
+		<th class="t0"> {{ choice.curr_status }}/{{ choice.max_booking }} </th>
+	</tr>
+{% endfor %}
+</table>
+<input type="submit" value="Confirm Booking" class="i1">
+</form>
+
+
+<form action="{% url 'divaDoc:cancel_appointment' doctor.id %}" method="post">
+{% csrf_token %}
+<table>
+	<tr class="t1"> 
+		<th class="t0">	Book </th>
+		<th class="t0"> Name </th> 
+		<th class="t0"> Location </th>
+		<th class="t0"> Available Dates </th>
+		<th class="t0"> Working hour</th>
+		<th class="t0"> Status </th>
+	</tr>
+{% for choice in doctor.choice_set.all %}
+	<tr class='t2'> 
+		<th>	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">	</th>
+		<th>	<label for="choice{{ forloop.counter }}">{{ choice.name }}</label>	</th>
+		<th>	{{ choice.location }}	</th>
+		<th>	{{ choice.available_dates }}	</th>
+		<th class="t0"> {{ choice.works_from }} - {{ choice.works_upto }} </th>
+		<th class="t0"> {{ choice.curr_status }}/{{ choice.max_booking }} </th>
+	</tr>
+{% endfor %}
+</table>
+<input type="submit" value="Cancel Booking" class="i2">
+</form>

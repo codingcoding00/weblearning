@@ -1,0 +1,74 @@
+{% extends "divaDoc/base.html" %}
+{% block home_url %}
+{% if user.is_active %}
+	"{% url 'divaDoc:userhome' %}"
+{% else%}
+	"/"
+{%endif%}
+{% endblock %}
+
+{% block home_name %}
+{% if user.is_active %}
+	{{user.username}}
+{% else%}
+	Diva Doc
+{%endif%}
+{% endblock %}
+
+
+
+{% block title %}Blogs{% endblock %}
+{% block blogs_active %}active{% endblock %}
+
+
+{% block nav_right %}
+
+  {% if user.is_active %}
+	<ul class="nav navbar-nav navbar-right">
+	  <li class="active"><a href="{% url 'divaDoc:user_logout' %}">Log Out</a></li>
+	</ul>
+  {% else %}
+	<ul class="nav navbar-nav navbar-left">
+		<li class="dropdown {% block register_active %}{% endblock %}"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Sign Up<span class="caret"></span></a>
+															<ul class="dropdown-menu" role="menu">
+																	<li role="presentation"><a href="{% url 'divaDoc:signup' %}">As Patient</a></li>
+																	<li role="presentation"><a href="{% url 'Doctor:signup_doc' %}">As Doctor</a></li>
+															</ul>
+													</li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Log In <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li role="presentation"><a href="{% url 'divaDoc:login' %}">As Patient</a></li>
+                                  <li role="presentation"><a href="{% url 'Doctor:login_doc' %}">As Doctor</a></li>
+                              </ul>
+                          </li>
+	</ul>
+{% endif %}
+{%endblock%}
+{% block body %}
+
+
+<b>
+<pre><h1>		  	Health Blogs</h1></pre></b>
+
+
+<div class="media">
+  <div class="media-left media-middle">
+    <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><b>Know Before You Go: Allergy Tests</b></h4>
+    <p>f you have allergies, you’re not alone. More than 50 million Americans have allergies, making them the sixth most common cause of chronic illness. But it’s not enough to know that you’re one of millions who suffer. To treat allergies more effectively, you first need to know what is causing your allergic reactions. Allergy tests are quick and painless ways to find out. Here’s what you need to know about allergy tests before you head to the appointment.</p>
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-right media-middle">
+    <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><b>The Full Helping </b></h4>
+    <p>Gena Hamshaw’s blog is bursting with fresh recipes (all vegan!) and lifestyle tips that will keep you coming back for seconds. The Full Helping celebrates healthy living with a personal touch, which is both refreshing and encouraging to those who may have struggled with eating disorders or who are still on the fence about taking the plunge into better food choices.</p>
+  </div>
+</div>
+
+{% endblock%}

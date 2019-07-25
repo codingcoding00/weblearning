@@ -1,0 +1,6 @@
+<h1> {{ doctor.d_type }} </h1>
+{% for choice in doctor.choice_set.all %}
+	<span> {{ choice.name }} -- {{ choice.curr_status }} booked </span>
+	<br>
+{% endfor %}
+<a href="{% url 'divaDoc:detail_appointment' doctor.id %}">Book Again ? </a>

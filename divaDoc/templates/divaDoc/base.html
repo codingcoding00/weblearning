@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTH-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Doc Diva{% endblock %}</title>
+  {%load staticfiles %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href = "https://fonts.googleapis.com/css?family=Satisfy">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'divaDoc/style.css'%}">
+</head>
+<body>
+<div>
+
+  <nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+
+
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href={% block home_url %}{% endblock %}>{% block home_name %}Diva Doc{% endblock %}</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      </div>
+
+      {% block home_menu %}
+      <div class="collapse navbar-collapse navbar-left">
+        <ul class="nav navbar-nav navbar-left">
+          <li ><a href="{% url 'medicines:index' %}"><b>Medicines</b></a></li>
+          <li ><a href="{% url 'divaDoc:blogs' %}"><b>Blogs</b></a></li>
+        </ul>
+      </div>
+      {% endblock %}
+
+      <div class="collapse navbar-collapse navbar-right" id="topNavBar">
+        {% block home_search %}
+        <form class="navbar-form navbar-left" role="search" method="get" action="#">
+          <div class="form-group">
+            <input type="text" class="form-control" name="q" value="">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        {% endblock %}
+        {% block nav_right %}
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown {% block register_active %}{% endblock %}"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Sign Up<span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation"><a href="{% url 'divaDoc:signup' %}">As Patient</a></li>
+                                        <li role="presentation"><a href="{% url 'Doctor:signup_doc' %}">As Doctor</a></li>
+                                    </ul>
+                                </li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Log In <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li role="presentation"><a href="{% url 'divaDoc:login' %}">As Patient</a></li>
+                                        <li role="presentation"><a href="{% url 'Doctor:login_doc' %}">As Doctor</a></li>
+                                    </ul>
+                                </li>
+        </ul>
+
+        {%endblock%}
+
+
+
+
+
+      </div>
+
+    </div>
+  </nav>
+</div>
+{% block body %}
+{% endblock%}
+
+
+</body>
+</html>
