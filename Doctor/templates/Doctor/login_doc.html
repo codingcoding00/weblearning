@@ -1,0 +1,38 @@
+{% extends 'divaDoc/base.html' %}
+{% block title %}Log In{% endblock %}
+{% block home_url %}"/"{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+{% block home_search %}
+{% endblock %}
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Doctor Log In</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+										<form action="{% url 'Doctor:login_doc' %}" method='post'>
+											{% csrf_token %}
+											{% include 'divaDoc/form_template.html' %}
+
+											<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<button type="submit" class="btn btn-success">Submit</button>
+													</div>
+											</div>
+										</form>
+									</div>
+	                <div class="panel-footer">
+	                    Don't have an account? <a href="{% url 'Doctor:signup_doc' %}">Click here</a> to register.
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+	</div>
+
+{% endblock %}

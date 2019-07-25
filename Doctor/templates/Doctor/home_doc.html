@@ -1,0 +1,63 @@
+{% extends "divaDoc/base.html" %}
+{% block home_url %}"{% url 'Doctor:home_doc' %}"{% endblock %}
+{% block home_name %}Doc Diva{% endblock %}
+
+{% block home_menu %}
+<div class="collapse navbar-collapse navbar-left">
+  <ul class="nav navbar-nav navbar-left">
+    <li class="{% block status_active %}{% endblock %}"><a href="{% url 'Doctor:live_status' %}"><b>Live Status</b></a></li>
+    <li class="{% block blogs_active %}{% endblock %}"><a href="{% url 'Doctor:write_a_blog' %}"><b>Blogs</b></a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block nav_right %}
+<ul class="nav navbar-nav navbar-right">
+  <li class="active"><a href="{% url 'divaDoc:user_logout' %}">Log Out</a></li>
+</ul>
+{%endblock%}
+{% block body %}
+<h1> Home Doctor </h1>
+
+<div class="albums-container container-fluid">
+  <div class="row">
+
+        <div class="col-sm-4 col-lg-2">
+          <div class="thumbnail" id="c1">
+            <a href="{% url 'Doctor:write_a_blog' %}">
+              <h2 class='x1'>Write a blog</h2>
+            </a>
+          </div>
+        </div>
+        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+        <div class="col-sm-4 col-lg-2">
+          <div class="thumbnail" id="c2">
+            <a href="{% url 'Doctor:live_status' %}">
+              <h2 class='x2'>Live Status</h2>
+            </a>
+          </div>
+        </div>
+            {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+          <div class="col-sm-4 col-lg-2">
+          <div class="thumbnail" id='c3'>
+            <a href="{% url 'Doctor:rating_doc' %}">
+              <h2 class='x3'>Your Rating</h2>
+            </a>
+          </div>
+        </div>
+            {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+        <div class="col-sm-4 col-lg-2">
+          <div class="thumbnail" id='c4'>
+            <a href="{% url 'divaDoc:feedback' %}">
+              <h2 class='x4'>Feedback</h2>
+            </a>
+          </div>
+        </div>
+        {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+
+
+  </div>
+</div>
+
+
+{% endblock %}
