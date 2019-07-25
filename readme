@@ -1,0 +1,6 @@
+python version 3.5
+
+django version == 2.1.7
+
+Go to the 'final' directory
+run command 'python manage.py runserver' or 'python3 manage.py runserver'
